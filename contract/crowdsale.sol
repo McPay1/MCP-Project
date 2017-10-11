@@ -79,12 +79,12 @@ contract StandardToken
         /*assert(balanceOf[_from] + balanceOf[_to] == previousBalances);*/
     }
 
-    function transfer(address _to, uint256 _value) internal
+    function transfer(address _to, uint256 _value) public
     {
         _transfer(msg.sender, _to, _value);
     }
 
-    function transferFrom(address _from, address _to, uint256 _value) public
+    function transferFrom(address _from, address _to, uint256 _value) internal
         returns (bool success)
     {
         require(_value <= allowance[_from][msg.sender]);      // Check allowance

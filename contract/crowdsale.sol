@@ -79,7 +79,7 @@ contract StandardToken
         /*assert(balanceOf[_from] + balanceOf[_to] == previousBalances);*/
     }
 
-    function transfer(address _to, uint256 _value) public
+    function transfer(address _to, uint256 _value) internal
     {
         _transfer(msg.sender, _to, _value);
     }
@@ -93,14 +93,14 @@ contract StandardToken
         return true;
     }
 
-    function approve(address _spender, uint256 _value) public
+    function approve(address _spender, uint256 _value) internal
         returns (bool success)
 	  {
         allowance[msg.sender][_spender] = _value;
         return true;
     }
 
-    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) internal
         returns (bool success)
 	  {
         tokenRecipient spender = tokenRecipient(_spender);
